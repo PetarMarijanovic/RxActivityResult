@@ -4,9 +4,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.util.Pair;
 
 import io.reactivex.Single;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.subjects.PublishSubject;
 
@@ -14,24 +16,11 @@ import io.reactivex.subjects.PublishSubject;
 // TODO support fragment?
 public class RxActivityResultFragment extends Fragment {
 
-  private PublishSubject<ActivityResult> resultSubject = PublishSubject.create();
-
-  public Single<ActivityResult> single(Intent intent, final int requestCode) {
-    startActivityForResult(intent, requestCode);
-    return resultSubject
-        .filter(
-            new Predicate<ActivityResult>() {
-              @Override
-              public boolean test(@NonNull ActivityResult result) throws Exception {
-                return result.getRequestCode() == requestCode;
-              }
-            })
-        .firstOrError();
-  }
+  private PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    resultSubject.onNext(new ActivityResult(requestCode, resultCode, data));
+    resultSubject.onNext(Pair.create(requestCode, new ActivityResult(resultCode, data)));
   }
 
   @Override
@@ -40,29 +29,32 @@ public class RxActivityResultFragment extends Fragment {
     setRetainInstance(true);
   }
 
-  // TODO Separate class
-  public static class ActivityResult {
+  public Single<ActivityResult> start(Intent intent, final int requestCode) {
+    startActivityForResult(intent, requestCode);
 
-    private int requestCode;
-    private int resultCode;
-    private Intent data;
+    return resultSubject
+        .filter(isRequestCodeEqual(requestCode))
+        .map(toActivityResult())
+        .firstOrError();
+  }
 
-    public ActivityResult(int requestCode, int resultCode, Intent data) {
-      this.requestCode = requestCode;
-      this.resultCode = resultCode;
-      this.data = data;
-    }
+  @NonNull
+  private Function<Pair<Integer, ActivityResult>, ActivityResult> toActivityResult() {
+    return new Function<Pair<Integer, ActivityResult>, ActivityResult>() {
+      @Override
+      public ActivityResult apply(@NonNull Pair<Integer, ActivityResult> result) throws Exception {
+        return result.second;
+      }
+    };
+  }
 
-    public int getRequestCode() {
-      return requestCode;
-    }
-
-    public int getResultCode() {
-      return resultCode;
-    }
-
-    public Intent getData() {
-      return data;
-    }
+  @NonNull
+  private Predicate<Pair<Integer, ActivityResult>> isRequestCodeEqual(final int requestCode) {
+    return new Predicate<Pair<Integer, ActivityResult>>() {
+      @Override
+      public boolean test(@NonNull Pair<Integer, ActivityResult> result) throws Exception {
+        return result.first == requestCode;
+      }
+    };
   }
 }

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
   }
   
   private fun enable() {
-    RxActivityResult(this).single(Intent(this, Main2Activity::class.java), 123456)
+    RxActivityResult(this).start(Intent(this, Main2Activity::class.java), 123456)
         .subscribe({ Log.d("Petarr", "success " + it) },
                    { Log.e("Petarr", "fail " + it.message) })
     
