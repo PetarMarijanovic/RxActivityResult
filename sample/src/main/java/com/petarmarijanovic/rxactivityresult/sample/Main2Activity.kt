@@ -1,8 +1,9 @@
-package com.petarmarijanovic.rxactivityresult
+package com.petarmarijanovic.rxactivityresult.sample
 
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.petarmarijanovic.rxactivityresult.R
 
 class Main2Activity : AppCompatActivity() {
   

@@ -1,9 +1,11 @@
-package com.petarmarijanovic.rxactivityresult
+package com.petarmarijanovic.rxactivityresult.sample
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.petarmarijanovic.rxactivityresult.R
+import com.petarmarijanovic.rxactivityresult.RxActivityResult
 
 class MainActivity : AppCompatActivity() {
   
