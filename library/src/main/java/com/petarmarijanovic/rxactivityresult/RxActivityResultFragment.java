@@ -13,7 +13,6 @@ import io.reactivex.functions.Predicate;
 import io.reactivex.subjects.PublishSubject;
 
 /** Created by petar on 26/07/2017. */
-// TODO support fragment?
 public class RxActivityResultFragment extends Fragment {
 
   private PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();

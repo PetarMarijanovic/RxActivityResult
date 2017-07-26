@@ -5,6 +5,8 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
+import java.util.Random;
+
 import io.reactivex.Single;
 
 /** Created by petar on 26/07/2017. */
@@ -14,6 +16,7 @@ public class RxActivityResult {
       "com.petarmarijanovic.rxactivityresult.RxActivityResultFragment";
 
   private RxActivityResultFragment fragment;
+  private Random random = new Random();
 
   public RxActivityResult(@NonNull Activity activity) {
     FragmentManager manager = activity.getFragmentManager();
@@ -30,7 +33,7 @@ public class RxActivityResult {
     this.fragment = attachedFragment;
   }
 
-  public Single<ActivityResult> start(Intent intent, int requestCode) {
-    return fragment.start(intent, requestCode);
+  public Single<ActivityResult> start(Intent intent) {
+    return fragment.start(intent, random.nextInt());
   }
 }
