@@ -29,6 +29,10 @@ public class ActivityResult {
     return resultCode == Activity.RESULT_CANCELED;
   }
 
+  public boolean isFirstUser() {
+    return resultCode == Activity.RESULT_FIRST_USER;
+  }
+
   @Override
   public int hashCode() {
     int result = resultCode;
