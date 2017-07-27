@@ -18,7 +18,7 @@ TODO Create instance
 TODO Usage
 ```kotlin
   rxActivityResult.start(intent)
-        .subscribe({ Log.d("Result", it) }, { it.printStackTrace() })       
+        .subscribe({ Log.d("Result", it.isOk()) }, { it.printStackTrace() })       
 ```
 
 Download
@@ -31,7 +31,7 @@ repositories {
 }
     
 dependencies {
-    compile 'com.petarmarijanovic:rx-activity-result:1.0.1'
+    compile 'com.petarmarijanovic:rx-activity-result:1.1.0'
 }
 ```
 
@@ -40,7 +40,7 @@ dependencies {
 <dependency>
   <groupId>com.petarmarijanovic</groupId>
   <artifactId>rx-activity-result</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
