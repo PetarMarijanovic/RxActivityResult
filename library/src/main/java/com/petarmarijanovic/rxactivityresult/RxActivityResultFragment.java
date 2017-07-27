@@ -17,8 +17,6 @@ public class RxActivityResultFragment extends Fragment {
 
   private PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();
 
-  public RxActivityResultFragment() {}
-
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     resultSubject.onNext(Pair.create(requestCode, new ActivityResult(resultCode, data)));
@@ -42,21 +40,21 @@ public class RxActivityResultFragment extends Fragment {
   }
 
   @NonNull
-  private Function<Pair<Integer, ActivityResult>, ActivityResult> toActivityResult() {
-    return new Function<Pair<Integer, ActivityResult>, ActivityResult>() {
-      @Override
-      public ActivityResult apply(@NonNull Pair<Integer, ActivityResult> result) throws Exception {
-        return result.second;
-      }
-    };
-  }
-
-  @NonNull
   private Predicate<Pair<Integer, ActivityResult>> isRequestCodeEqual(final int requestCode) {
     return new Predicate<Pair<Integer, ActivityResult>>() {
       @Override
       public boolean test(@NonNull Pair<Integer, ActivityResult> result) throws Exception {
         return result.first == requestCode;
+      }
+    };
+  }
+
+  @NonNull
+  private Function<Pair<Integer, ActivityResult>, ActivityResult> toActivityResult() {
+    return new Function<Pair<Integer, ActivityResult>, ActivityResult>() {
+      @Override
+      public ActivityResult apply(@NonNull Pair<Integer, ActivityResult> result) throws Exception {
+        return result.second;
       }
     };
   }
