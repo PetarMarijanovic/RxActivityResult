@@ -8,12 +8,12 @@
         android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ok" />
+        android:text="@string/general_ok" />
 
     <Button
         android:id="@+id/cancel_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="cancel" />
+        android:text="@string/general_cancel" />
 
 </LinearLayout>

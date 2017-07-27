@@ -1,6 +1,12 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.M12.3"
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+
+apply from: './staticAnalysis/static_analysis.gradle'
 
 android {
     compileSdkVersion 25
@@ -18,6 +24,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 }
 

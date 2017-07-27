@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">RxActivityResult</string>
+    <string name="app_name">RxActivityResult Sample</string>
+    <string name="other_activity_button">Other Activity</string>
+    <string name="other_activity_status">Status:</string>
+    <string name="bluetooth_status">Status:</string>
+    <string name="bluetooth_button">Bluetooth</string>
+    <string name="general_ok">OK</string>
+    <string name="general_cancel">Cancel</string>
+    <string name="result_ok">OK</string>
+    <string name="result_canceled">CANCELED</string>
 </resources>

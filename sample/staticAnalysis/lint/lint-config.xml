@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+
+    <issue id="all">
+        <ignore path="build" />
+    </issue>
+
+    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+
+    <!-- Remove this check when Lint for Kotlin is updated
+    Android Lint: False-positive Lint warning "unused resources" for resources in Kotlin code
+    https://youtrack.jetbrains.com/issue/KT-12499 -->
+    <issue id="UnusedResources" severity="ignore" />
+
+</lint>

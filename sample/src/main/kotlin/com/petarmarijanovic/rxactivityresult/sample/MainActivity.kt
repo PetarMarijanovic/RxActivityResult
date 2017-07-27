@@ -3,7 +3,6 @@ package com.petarmarijanovic.rxactivityresult.sample
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
@@ -39,11 +38,11 @@ class MainActivity : AppCompatActivity() {
   
   private fun updateTextView(view: TextView, resultCode: Int) {
     if (resultCode == Activity.RESULT_OK) {
-      view.text = "OK"
-      view.setTextColor(Color.parseColor("#00FF00"))
+      view.setText(R.string.result_ok)
+      view.setTextColor(resources.getColor(R.color.green))
     } else if (resultCode == Activity.RESULT_CANCELED) {
-      view.text = "CANCELED"
-      view.setTextColor(Color.parseColor("#FF0000"))
+      view.setText(R.string.result_canceled)
+      view.setTextColor(resources.getColor(R.color.red))
     }
   }
 }

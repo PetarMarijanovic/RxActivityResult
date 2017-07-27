@@ -1,0 +1,11 @@
+apply from: './staticAnalysis/lint/lint.gradle'
+apply from: './staticAnalysis/detekt/detekt.gradle'
+
+task staticAnalysis {
+
+    group 'Verification'
+    description 'Generate StaticAnalysis reports.'
+
+    dependsOn 'detektCheck'
+    dependsOn 'lint'
+}

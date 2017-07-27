@@ -1,0 +1,9 @@
+detekt {
+    version "1.0.0.M12.3"
+    profile("main") {
+        input = "./src/main/kotlin"
+        config = "./staticAnalysis/detekt/detekt.yml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+        output = "$project.buildDir/reports/staticAnalysis/detekt/detekt.xml"
+    }
+}

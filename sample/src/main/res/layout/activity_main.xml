@@ -14,7 +14,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Bluetooth" />
+            android:text="@string/bluetooth_button" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -26,7 +26,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Status: "
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+                android:text="@string/bluetooth_status"
                 android:textSize="20sp" />
 
             <TextView
@@ -49,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Activity" />
+            android:text="@string/other_activity_button" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -61,7 +63,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Status: "
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+                android:text="@string/other_activity_status"
                 android:textSize="20sp" />
 
             <TextView
