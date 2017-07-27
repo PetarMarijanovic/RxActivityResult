@@ -28,6 +28,7 @@ public class RxActivityResultFragment extends Fragment {
     setRetainInstance(true);
   }
 
+  /** TODO: Write JavaDoc. */
   public Single<ActivityResult> start(final Intent intent) {
     int requestCode = RequestCodeGenerator.generate();
 

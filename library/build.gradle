@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+apply from: './staticAnalysis/static_analysis.gradle'
+
 ext {
     PUBLISH_GROUP_ID = 'com.petarmarijanovic'
     PUBLISH_ARTIFACT_ID = 'rx-activity-result'

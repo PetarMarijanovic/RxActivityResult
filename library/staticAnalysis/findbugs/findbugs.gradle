@@ -1,0 +1,40 @@
+apply plugin: 'findbugs'
+
+findbugs {
+    toolVersion = '3.0.1'
+}
+
+def reportsDirectory = "$project.buildDir/reports/staticAnalysis/findbugs"
+
+task findbugs(type: FindBugs) {
+
+    group 'Verification'
+    description 'Generate a FindBugs report that contains possible bugs in Java.'
+
+    ignoreFailures = false
+
+    effort = "max"
+    reportLevel = "high"
+
+    excludeFilter = new File("./staticAnalysis/findbugs/filter.xml")
+    classes = files("$project.buildDir/intermediates/classes")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+
+    classpath = files()
+    reports {
+        xml {
+            enabled = false
+            destination reportsDirectory + "/findbugs.xml"
+        }
+
+        html {
+            enabled = true
+            destination reportsDirectory + "/findbugs.html"
+        }
+    }
+}

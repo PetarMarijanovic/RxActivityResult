@@ -15,6 +15,7 @@ public class RxActivityResult {
 
   private RxActivityResultFragment fragment;
 
+  /** TODO: Write JavaDoc. */
   public RxActivityResult(@NonNull Activity activity) {
     FragmentManager manager = activity.getFragmentManager();
 
@@ -30,6 +31,7 @@ public class RxActivityResult {
     this.fragment = attachedFragment;
   }
 
+  /** TODO: Write JavaDoc. */
   public Single<ActivityResult> start(Intent intent) {
     return fragment.start(intent);
   }
