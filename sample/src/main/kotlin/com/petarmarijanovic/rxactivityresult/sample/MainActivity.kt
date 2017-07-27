@@ -4,6 +4,7 @@ import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.petarmarijanovic.rxactivityresult.RxActivityResult
@@ -39,10 +40,10 @@ class MainActivity : AppCompatActivity() {
   private fun updateTextView(view: TextView, resultCode: Int) {
     if (resultCode == Activity.RESULT_OK) {
       view.setText(R.string.result_ok)
-      view.setTextColor(resources.getColor(R.color.green))
+      view.setTextColor(ContextCompat.getColor(this, R.color.green))
     } else if (resultCode == Activity.RESULT_CANCELED) {
       view.setText(R.string.result_canceled)
-      view.setTextColor(resources.getColor(R.color.red))
+      view.setTextColor(ContextCompat.getColor(this, R.color.red))
     }
   }
 }
