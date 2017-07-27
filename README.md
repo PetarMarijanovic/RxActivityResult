@@ -5,7 +5,7 @@
 
 TODO Description
 
-TODO gif
+![RxActivityResult](https://media.giphy.com/media/mK5qCqlKPF8ac/giphy.gif)
 
 Usage
 -----
