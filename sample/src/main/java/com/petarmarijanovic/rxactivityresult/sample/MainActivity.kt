@@ -1,25 +1,49 @@
 package com.petarmarijanovic.rxactivityresult.sample
 
+import android.app.Activity
+import android.bluetooth.BluetoothAdapter
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import com.petarmarijanovic.rxactivityresult.R
+import android.widget.TextView
 import com.petarmarijanovic.rxactivityresult.RxActivityResult
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+  
+  private lateinit var rxActivityResult: RxActivityResult
   
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     
-    findViewById(R.id.enable).setOnClickListener { enable() }
+    rxActivityResult = RxActivityResult(this)
+    
+    bluetooth_button.setOnClickListener { enableBluetooth() }
+    activity_button.setOnClickListener { startActivity() }
   }
   
-  private fun enable() {
-    RxActivityResult(this).start(Intent(this, Main2Activity::class.java))
-        .subscribe({ Log.d("Petarr", "success " + it) },
-                   { Log.e("Petarr", "fail " + it.message) })
+  private fun enableBluetooth() {
+    rxActivityResult.start(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE))
+        .subscribe({ updateTextView(bt_status, it.resultCode) },
+                   { it.printStackTrace() })
     
+  }
+  
+  private fun startActivity() {
+    rxActivityResult.start(Intent(this, OtherActivity::class.java))
+        .subscribe({ updateTextView(activity_status, it.resultCode) },
+                   { it.printStackTrace() })
+  }
+  
+  private fun updateTextView(view: TextView, resultCode: Int) {
+    if (resultCode == Activity.RESULT_OK) {
+      view.text = "OK"
+      view.setTextColor(Color.parseColor("#00FF00"))
+    } else if (resultCode == Activity.RESULT_CANCELED) {
+      view.text = "CANCELED"
+      view.setTextColor(Color.parseColor("#FF0000"))
+    }
   }
 }

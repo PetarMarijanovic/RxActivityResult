@@ -3,16 +3,16 @@ package com.petarmarijanovic.rxactivityresult.sample
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.petarmarijanovic.rxactivityresult.R
+import kotlinx.android.synthetic.main.activity_other.*
 
-class Main2Activity : AppCompatActivity() {
+class OtherActivity : AppCompatActivity() {
   
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main2)
+    setContentView(R.layout.activity_other)
     
-    findViewById(R.id.ok).setOnClickListener { finish(Activity.RESULT_OK) }
-    findViewById(R.id.cancel).setOnClickListener { finish(Activity.RESULT_CANCELED) }
+    ok_button.setOnClickListener { finish(Activity.RESULT_OK) }
+    cancel_button.setOnClickListener { finish(Activity.RESULT_CANCELED) }
   }
   
   private fun finish(result: Int) {

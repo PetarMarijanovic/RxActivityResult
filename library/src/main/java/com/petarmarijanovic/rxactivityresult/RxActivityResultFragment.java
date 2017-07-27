@@ -17,6 +17,8 @@ public class RxActivityResultFragment extends Fragment {
 
   private PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();
 
+  public RxActivityResultFragment() {}
+
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     resultSubject.onNext(Pair.create(requestCode, new ActivityResult(resultCode, data)));
@@ -28,7 +30,9 @@ public class RxActivityResultFragment extends Fragment {
     setRetainInstance(true);
   }
 
-  public Single<ActivityResult> start(Intent intent, final int requestCode) {
+  public Single<ActivityResult> start(final Intent intent) {
+    int requestCode = RequestCodeGenerator.generate();
+
     startActivityForResult(intent, requestCode);
 
     return resultSubject

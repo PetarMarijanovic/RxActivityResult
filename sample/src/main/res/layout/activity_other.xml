@@ -5,13 +5,13 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/ok"
+        android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ok" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/cancel_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="cancel" />
