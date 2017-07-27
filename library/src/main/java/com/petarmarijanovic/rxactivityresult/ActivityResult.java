@@ -1,5 +1,6 @@
 package com.petarmarijanovic.rxactivityresult;
 
+import android.app.Activity;
 import android.content.Intent;
 
 /** Created by petar on 26/07/2017. */
@@ -18,6 +19,14 @@ public class ActivityResult {
 
   public Intent getData() {
     return data;
+  }
+
+  public boolean isOk() {
+    return resultCode == Activity.RESULT_OK;
+  }
+
+  public boolean isCanceled() {
+    return resultCode == Activity.RESULT_CANCELED;
   }
 
   @Override
