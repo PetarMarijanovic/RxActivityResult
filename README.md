@@ -3,24 +3,41 @@
 
 # RxActivityResult
 
-TODO Description
+With this simple library use your OnActivityResult results in any class (not just an Activity or Fragment) and use it in a reactive way within your observable chains. 
+
+The library attaches one fragment to the desired activity and listens to OnActivityResult. The source code is easy to read and understand.
+**Library code is written in Java to avoid unnecessary dependencies, and Sample code is written in Kotlin to avoid unnecessary boilerplate.** :)
 
 ![RxActivityResult](https://media.giphy.com/media/mK5qCqlKPF8ac/giphy.gif)
 
 Usage
 -----
 
-TODO Create instance
+Simply instantiate it with an Activity object and use it anywhere, or if you are using Dagger, create it in your Activity scope and provide to all other classes that need to use it.
 ```kotlin
-  RxActivityResult(this)
+  RxActivityResult(this) // this -> Activity
 ```
 
-TODO Usage
+To start an activity for result call the `start` method and send it in the `intent` you wish to start. The method returns a `Single` and **when you subscribe** to it the intent is sent and you get the result for it.
 ```kotlin
-  rxActivityResult.start(intent)
-        .subscribe({ Log.d("Result", it.isOk()) }, { it.printStackTrace() })       
+  rxActivityResult.start(intent) // intent -> bluetooth, gallery, other activity...
+        .subscribe({ Log.d("Result", it) }, { it.printStackTrace() })       
 ```
 
+The result class consists of:
+```java
+  // Fields
+  int getResultCode();
+
+  Intent getData();
+
+  // Convenience methods
+  boolean isOk();
+
+  boolean isCanceled();
+
+  boolean isFirstUser();
+```
 Download
 --------
 
