@@ -18,13 +18,13 @@ Simply instantiate it with an Activity object and use it anywhere, or if you are
   RxActivityResult(this) // this -> Activity
 ```
 
-To start an activity for result call the `start` method and send it in the `intent` you wish to start. The method returns a `Single` and **when you subscribe** to it the intent is sent and you get the result for it.
+To start an activity for result call the `start` method and send it in the `intent` you wish to start. The method returns a `Single` which returns the `ActivityResult` object.
 ```kotlin
   rxActivityResult.start(intent) // intent -> bluetooth, gallery, other activity...
         .subscribe({ Log.d("Result", it) }, { it.printStackTrace() })       
 ```
 
-The result class consists of:
+The `ActivityResult` class consists of:
 ```java
   // Fields
   int getResultCode();
