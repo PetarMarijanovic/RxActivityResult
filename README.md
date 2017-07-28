@@ -3,9 +3,11 @@
 
 # RxActivityResult
 
-With this simple library use your OnActivityResult results in any class (not just an Activity or Fragment) and use it in a reactive way within your observable chains. 
+With this simple library use your OnActivityResult results in any class (not just in Activity or Fragment) and use it in a reactive way within your observable chains. 
 
-The library attaches one fragment to the desired activity and listens to OnActivityResult. The source code is easy to read and understand.
+The library attaches one Fragment to the Activity, sends desired intents and listens to OnActivityResult. 
+
+The source code is easy to read and understand.
 **Library code is written in Java to avoid unnecessary dependencies, and Sample code is written in Kotlin to avoid unnecessary boilerplate.** :)
 
 ![RxActivityResult](https://media.giphy.com/media/l41JQiEb7pJOqAknu/giphy.gif)
@@ -18,25 +20,22 @@ Simply instantiate it with an Activity object and use it anywhere, or if you are
   RxActivityResult(this) // this -> Activity
 ```
 
-To start an activity for result call the `start` method and send it in the `intent` you wish to start. The method returns a `Single` which returns the `ActivityResult` object.
+To start an activity for result, call the `start` method and send in the `intent` you wish to start. The method returns a `Single` which returns the `ActivityResult` object.
 ```kotlin
   rxActivityResult.start(intent) // intent -> bluetooth, gallery, other activity...
         .subscribe({ Log.d("Result", it) }, { it.printStackTrace() })       
 ```
 
 The `ActivityResult` class consists of:
-```java
+```kotlin
   // Fields
-  int getResultCode();
-
-  Intent getData();
+  val getResultCode: Int
+  val getData: Intent?
 
   // Convenience methods
-  boolean isOk();
-
-  boolean isCanceled();
-
-  boolean isFirstUser();
+  fun isOk(): Boolean
+  fun isCanceled(): Boolean
+  fun isFirstUser(): Boolean
 ```
 Download
 --------
