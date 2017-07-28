@@ -8,7 +8,7 @@ With this simple library use your OnActivityResult results in any class (not jus
 The library attaches one fragment to the desired activity and listens to OnActivityResult. The source code is easy to read and understand.
 **Library code is written in Java to avoid unnecessary dependencies, and Sample code is written in Kotlin to avoid unnecessary boilerplate.** :)
 
-![RxActivityResult](https://media.giphy.com/media/mK5qCqlKPF8ac/giphy.gif)
+![RxActivityResult](https://media.giphy.com/media/l41JQiEb7pJOqAknu/giphy.gif)
 
 Usage
 -----
