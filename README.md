@@ -5,7 +5,7 @@
 
 With this simple library use your OnActivityResult results in any class (not just in Activity or Fragment) and use it in a reactive way within your observable chains. 
 
-The library attaches one Fragment to the Activity, sends desired intents and listens to OnActivityResult. 
+The library attaches one Fragment to the Activity, sends desired intents and listens to OnActivityResult. You can read more about it in this [Medium article][1].
 
 The source code is easy to read and understand.
 **Library code is written in Java to avoid unnecessary dependencies, and Sample code is written in Kotlin to avoid unnecessary boilerplate.** :)
@@ -29,8 +29,8 @@ To start an activity for result, call the `start` method and send in the `intent
 The `ActivityResult` class consists of:
 ```kotlin
   // Fields
-  val getResultCode: Int
-  val getData: Intent?
+  val resultCode: Int
+  val data: Intent?
 
   // Convenience methods
   fun isOk(): Boolean
@@ -77,3 +77,5 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[1]: https://medium.com/@petar.marijanovic/rxactivityresult-fc2976d497b9
