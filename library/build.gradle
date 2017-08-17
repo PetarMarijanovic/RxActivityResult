@@ -5,7 +5,7 @@ apply from: './staticAnalysis/static_analysis.gradle'
 ext {
     PUBLISH_GROUP_ID = 'com.petarmarijanovic'
     PUBLISH_ARTIFACT_ID = 'rx-activity-result'
-    PUBLISH_VERSION = '1.2.0'
+    PUBLISH_VERSION = '1.3.0'
 }
 
 android {
@@ -13,7 +13,7 @@ android {
     buildToolsVersion "25.0.3"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

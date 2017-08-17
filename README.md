@@ -47,7 +47,7 @@ repositories {
 }
     
 dependencies {
-    compile 'com.petarmarijanovic:rx-activity-result:1.2.0'
+    compile 'com.petarmarijanovic:rx-activity-result:1.3.0'
 }
 ```
 
@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.petarmarijanovic</groupId>
   <artifactId>rx-activity-result</artifactId>
-  <version>1.2.0</version>
+  <version>1.3.0</version>
   <type>pom</type>
 </dependency>
 ```
