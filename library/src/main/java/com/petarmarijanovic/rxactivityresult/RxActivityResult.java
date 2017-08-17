@@ -5,7 +5,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 
-import io.reactivex.Single;
+import rx.Observable;
 
 /** Created by petar on 26/07/2017. */
 public class RxActivityResult {
@@ -32,7 +32,7 @@ public class RxActivityResult {
   }
 
   /** TODO: Write JavaDoc. */
-  public Single<ActivityResult> start(Intent intent) {
+  public Observable<ActivityResult> start(Intent intent) {
     return fragment.start(intent);
   }
 }
