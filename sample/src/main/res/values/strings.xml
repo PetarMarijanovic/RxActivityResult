@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">RxActivityResult Sample</string>
+    <string name="location_button">Location</string>
+    <string name="location_status">Status:</string>
     <string name="other_activity_button">Other Activity</string>
     <string name="other_activity_status">Status:</string>
     <string name="bluetooth_status">Status:</string>
