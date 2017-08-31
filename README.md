@@ -37,6 +37,9 @@ The `ActivityResult` class consists of:
   fun isCanceled(): Boolean
   fun isFirstUser(): Boolean
 ```
+
+The library also supports sending PendingIntents for Resolutions. See Location button in Sample.
+
 Download
 --------
 
