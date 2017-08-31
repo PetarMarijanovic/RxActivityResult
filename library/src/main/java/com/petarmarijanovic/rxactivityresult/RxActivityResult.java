@@ -1,9 +1,10 @@
 package com.petarmarijanovic.rxactivityresult;
 
-import android.app.Activity;
-import android.app.FragmentManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 
 import io.reactivex.Single;
 
@@ -16,8 +17,8 @@ public class RxActivityResult {
   private RxActivityResultFragment fragment;
 
   /** TODO: Write JavaDoc. */
-  public RxActivityResult(@NonNull Activity activity) {
-    FragmentManager manager = activity.getFragmentManager();
+  public RxActivityResult(@NonNull FragmentActivity activity) {
+    FragmentManager manager = activity.getSupportFragmentManager();
 
     RxActivityResultFragment attachedFragment =
         (RxActivityResultFragment) manager.findFragmentByTag(FRAGMENT_TAG);
@@ -32,7 +33,12 @@ public class RxActivityResult {
   }
 
   /** TODO: Write JavaDoc. */
-  public Single<ActivityResult> start(Intent intent) {
+  public Single<ActivityResult> start(final Intent intent) {
     return fragment.start(intent);
+  }
+
+  /** TODO: Write JavaDoc. */
+  public Single<ActivityResult> start(final PendingIntent pendingIntent) {
+    return fragment.start(pendingIntent);
   }
 }

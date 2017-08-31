@@ -1,13 +1,17 @@
 package com.petarmarijanovic.rxactivityresult;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
+import android.util.Log;
 
 import io.reactivex.Single;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.subjects.PublishSubject;
@@ -38,6 +42,21 @@ public class RxActivityResultFragment extends Fragment {
         .filter(isRequestCodeEqual(requestCode))
         .map(toActivityResult())
         .firstOrError();
+  }
+
+  /** TODO: Write JavaDoc. */
+  public Single<ActivityResult> start(final PendingIntent pendingIntent) {
+    int requestCode = RequestCodeGenerator.generate();
+    try {
+      startIntentSenderForResult(pendingIntent.getIntentSender(), requestCode, null, 0, 0, 0, null);
+      return resultSubject
+          .filter(isRequestCodeEqual(requestCode))
+          .map(toActivityResult())
+          .firstOrError();
+    } catch (IntentSender.SendIntentException e) {
+      Log.w("RxActivityResult", "Failed to start pendingIntent", e);
+      return Single.just(new ActivityResult(Activity.RESULT_CANCELED, null));
+    }
   }
 
   @NonNull
