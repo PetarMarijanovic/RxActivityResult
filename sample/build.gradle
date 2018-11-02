@@ -9,15 +9,15 @@ apply plugin: 'kotlin-android'
 apply from: './staticAnalysis/static_analysis.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.petarmarijanovic.rxactivityresult"
         minSdkVersion 22
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -32,18 +32,19 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.2'
-    compile 'com.patloew.rxlocation:rxlocation:1.0.3'
-    compile 'com.google.android.gms:play-services-location:11.0.4'
 
-    compile project(':library')
-    testCompile 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'com.patloew.rxlocation:rxlocation:1.0.3'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    implementation project(':library')
+    testImplementation 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()

@@ -12,4 +12,6 @@
     https://youtrack.jetbrains.com/issue/KT-12499 -->
     <issue id="UnusedResources" severity="ignore" />
 
+    <issue id="CheckResult" severity="ignore" />
+
 </lint>
