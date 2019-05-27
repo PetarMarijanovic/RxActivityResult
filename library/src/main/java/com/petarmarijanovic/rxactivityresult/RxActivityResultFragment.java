@@ -19,7 +19,7 @@ import io.reactivex.subjects.PublishSubject;
 /** Created by petar on 26/07/2017. */
 public class RxActivityResultFragment extends Fragment {
 
-  private PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();
+  protected PublishSubject<Pair<Integer, ActivityResult>> resultSubject = PublishSubject.create();
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
