@@ -5,7 +5,7 @@ apply from: './staticAnalysis/static_analysis.gradle'
 ext {
     PUBLISH_GROUP_ID = 'com.petarmarijanovic'
     PUBLISH_ARTIFACT_ID = 'rx-activity-result'
-    PUBLISH_VERSION = '2.2.0'
+    PUBLISH_VERSION = '2.2.1'
 }
 
 android {
