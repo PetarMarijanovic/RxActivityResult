@@ -10,4 +10,5 @@
     <string name="general_cancel">Cancel</string>
     <string name="result_ok">OK</string>
     <string name="result_canceled">CANCELED</string>
+    <string name="result_not_checked">Not Checked</string>
 </resources>

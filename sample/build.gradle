@@ -5,16 +5,25 @@ plugins {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 
 apply from: './staticAnalysis/static_analysis.gradle'
 
 android {
-    compileSdkVersion 28
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    compileSdkVersion 29
     buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.petarmarijanovic.rxactivityresult"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -38,10 +47,19 @@ dependencies {
     })
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    implementation "io.reactivex.rxjava2:rxkotlin:2.4.0"
     implementation 'com.patloew.rxlocation:rxlocation:1.0.3'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.activity:activity-ktx:1.0.0'
+
+    def lifecycle_version = "2.1.0"
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     implementation project(':library')
     testImplementation 'junit:junit:4.12'
@@ -49,3 +67,11 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+// Uncoment following compiler args to enable SAM in Kotlin (and "New Type Inference Algorithm")
+//
+//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+//    kotlinOptions {
+//        freeCompilerArgs += '-XXLanguage:+NewInference'
+//    }
+//}
